@@ -1,0 +1,26 @@
+{
+  "name": "add-reviewer-action",
+  "version": "1.0.0",
+  "description": "Github action that add Reviewers to the Pull Request",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build src/index.js -o dist --license licenses.txt",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/step-security/add-reviewers.git"
+  },
+  "keywords": [],
+  "author": "step-security",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.7",
+    "@actions/github": "^4.0.0",
+    "axios": "^1.18.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.44.1",
+    "jest": "^26.6.3"
+  }
+}
