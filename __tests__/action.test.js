@@ -3,7 +3,10 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 jest.mock("@actions/core");
-jest.mock("@actions/github");
+jest.mock("@actions/github", () => ({
+    context: {},
+    getOctokit: jest.fn(),
+}));
 
 const listReviewsResponse = {
     "data": [
