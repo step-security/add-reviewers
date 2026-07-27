@@ -36735,7 +36735,7 @@ async function action() {
             ...context.repo,
             pull_number: prNumber,
         };
-        const reviewsResponse = await client.pulls.listReviews(reviewsParam);
+        const reviewsResponse = await client.rest.pulls.listReviews(reviewsParam);
 
         const reviews = new Map();
         reviewsResponse.data.forEach(review => {
@@ -36758,7 +36758,7 @@ async function action() {
                 if (debugMode) core.info(`New Reviewer: Request review from ${reviewer}`);
                 finalReviewers.push(reviewer);
             } else {
-                if (rev == 'CHANGES_REQUESTED') {
+                if (rev === 'CHANGES_REQUESTED') {
                     if (reRequestWhenChangesRequested) {
                         if (debugMode) core.info(`Changes Requested: Request re-review from ${reviewer}`);
                         finalReviewers.push(reviewer);
@@ -36783,7 +36783,7 @@ async function action() {
             pull_number: prNumber,
             reviewers: finalReviewers,
         };
-        await client.pulls.requestReviewers(params);
+        await client.rest.pulls.requestReviewers(params);
     } catch (error) {
         core.setFailed(error);
     }

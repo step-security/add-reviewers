@@ -201,11 +201,13 @@ describe("Other than pull_request event", function () {
 function mockAddReviewers(addReviewers) {
     github.getOctokit = jest.fn(() => {
         return {
-            pulls: {
-                listReviews: jest.fn(() => {
-                    return listReviewsResponse;
-                }),
-                requestReviewers: addReviewers
+            rest: {
+                pulls: {
+                    listReviews: jest.fn(() => {
+                        return listReviewsResponse;
+                    }),
+                    requestReviewers: addReviewers
+                },
             },
         };
     });
